@@ -11,14 +11,14 @@ namespace MudBlazor
     {
         public static class String
         {
-            public const string Contains = "contains";
-            public const string NotContains = "not contains";
-            public const string Equal = "equals";
-            public const string NotEqual = "not equals";
-            public const string StartsWith = "starts with";
-            public const string EndsWith = "ends with";
-            public const string Empty = "is empty";
-            public const string NotEmpty = "is not empty";
+            public const string Contains = "contiene";
+            public const string NotContains = "non contiene";
+            public const string Equal = "uguale";
+            public const string NotEqual = "non uguale";
+            public const string StartsWith = "inizia con";
+            public const string EndsWith = "finisce con";
+            public const string Empty = "è vuoto";
+            public const string NotEmpty = "non è vuoto";
         }
 
         public static class Number
@@ -29,37 +29,37 @@ namespace MudBlazor
             public const string GreaterThanOrEqual = ">=";
             public const string LessThan = "<";
             public const string LessThanOrEqual = "<=";
-            public const string Empty = "is empty";
-            public const string NotEmpty = "is not empty";
+            public const string Empty = "è vuoto";
+            public const string NotEmpty = "non è vuoto";
         }
 
         public static class Enum
         {
-            public const string Is = "is";
-            public const string IsNot = "is not";
+            public const string Is = "è";
+            public const string IsNot = "non è";
         }
 
         public static class Boolean
         {
-            public const string Is = "is";
+            public const string Is = "è";
         }
 
         public static class DateTime
         {
-            public const string Is = "is";
-            public const string IsNot = "is not";
-            public const string After = "is after";
-            public const string OnOrAfter = "is on or after";
-            public const string Before = "is before";
-            public const string OnOrBefore = "is on or before";
-            public const string Empty = "is empty";
-            public const string NotEmpty = "is not empty";
+            public const string Is = "è";
+            public const string IsNot = "non è";
+            public const string After = "è dopo";
+            public const string OnOrAfter = "è il o dopo";
+            public const string Before = "è prima";
+            public const string OnOrBefore = "è il o prima";
+            public const string Empty = "è vuoto";
+            public const string NotEmpty = "non è vuoto";
         }
 
         public static class Guid
         {
-            public const string Equal = "equals";
-            public const string NotEqual = "not equals";
+            public const string Equal = "uguale";
+            public const string NotEqual = "non uguale";
         }
 
         internal static string[] GetOperatorByDataType(Type type)
