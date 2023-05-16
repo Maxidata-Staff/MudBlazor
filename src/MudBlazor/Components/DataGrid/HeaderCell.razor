@@ -34,7 +34,7 @@ else if (Column != null && !Column.Hidden)
     internal RenderFragment TableHeader()
     {
         return
-        @<text>
+    @<text>
         <span class="column-header">
             @if (sortable)
             {
@@ -43,19 +43,19 @@ else if (Column != null && !Column.Hidden)
                     {
                         @Column.HeaderTemplate(Column.headerContext)
                     }
-                    else 
+                    else
                     {
                         @computedTitle
                     }
                 </span>
             }
             else
-            { 
+            {
                 @if (Column.HeaderTemplate != null)
                 {
                     @Column.HeaderTemplate(Column.headerContext)
                 }
-                else 
+                else
                 {
                     @computedTitle
                 }
@@ -68,7 +68,7 @@ else if (Column != null && !Column.Hidden)
                         <MudIconButton Icon="@Column.SortIcon" Class="@sortIconClass" Size="@Size.Small" OnClick="@SortChangedAsync"></MudIconButton>
                     }
                     else
-                    {                        
+                    {
                         <MudIconButton Icon="@Column.SortIcon" Class="@sortIconClass" Size="@Size.Small" OnClick="@SortChangedAsync"></MudIconButton>
                         if(DataGrid.SortMode == SortMode.Multiple)
                         {
@@ -118,6 +118,11 @@ else if (Column != null && !Column.Hidden)
                 {
                     <MudIconButton Icon="@DataGrid.DragIndicatorIcon" Size="@DataGrid.DragIndicatorSize" Class="drag-icon-options"></MudIconButton>
                 }
+
+                @if (Column.HeaderOptionsTemplate != null)
+                {
+                    @Column.HeaderOptionsTemplate(Column.headerContext)
+                }
             </span>
         </span>
         @if (filterable && DataGrid.FilterMode == DataGridFilterMode.ColumnFilterMenu)
@@ -126,7 +131,7 @@ else if (Column != null && !Column.Hidden)
             <MudPopover Open="@_filtersMenuVisible" AnchorOrigin="@Origin.BottomRight" TransformOrigin="@Origin.TopRight" Class="pa-4 column-filter-popup">
                 @if (Column.FilterTemplate != null)
                 {
-                    @Column.FilterTemplate(Column.FilterContext) 
+                    @Column.FilterTemplate(Column.FilterContext)
                 }
                 else
                 {
@@ -142,6 +147,6 @@ else if (Column != null && !Column.Hidden)
                 }
             </MudPopover>
         }
-        </text>;
+    </text>;
     }
 }

@@ -40,6 +40,7 @@ namespace MudBlazor
         [Parameter] public int FooterColSpan { get; set; } = 1;
         [Parameter] public int HeaderColSpan { get; set; } = 1;
         [Parameter] public RenderFragment<HeaderContext<T>> HeaderTemplate { get; set; }
+        [Parameter] public RenderFragment<HeaderContext<T>> HeaderOptionsTemplate { get; set; }
         [Parameter] public RenderFragment<CellContext<T>> CellTemplate { get; set; }
         [Parameter] public RenderFragment<FooterContext<T>> FooterTemplate { get; set; }
         [Parameter] public RenderFragment<GroupDefinition<T>> GroupTemplate { get; set; }
