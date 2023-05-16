@@ -481,12 +481,12 @@
                 <MudItem xs="12">
                     @if (filterDefinition.FieldType.IsString && !(filterDefinition.Operator ?? "").EndsWith("empty"))
                     {
-                        <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Placeholder="Filter value" Margin="@Margin.Dense"
+                        <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Placeholder="Valore filtro" Margin="@Margin.Dense"
                                       Immediate="true" Class="filter-input"/>
                     }
                     else if (filterDefinition.FieldType.IsNumber && !(filterDefinition.Operator ?? "").EndsWith("empty"))
                     {
-                        <MudNumericField T="double?" Value="@filter._valueNumber" ValueChanged="@filter.NumberValueChanged" FullWidth="true" Placeholder="Filter value" Margin="@Margin.Dense"
+                        <MudNumericField T="double?" Value="@filter._valueNumber" ValueChanged="@filter.NumberValueChanged" FullWidth="true" Placeholder="Valore filtro" Margin="@Margin.Dense"
                                          Immediate="true" Class="filter-input" Culture="@filter.FilterColumn?.Culture"/>
                     }
                     else if (filterDefinition.FieldType.IsEnum)
@@ -505,8 +505,8 @@
                         <MudSelect T="bool?" Value="@filter._valueBool" ValueChanged="@filter.BoolValueChanged" FullWidth="true" Dense="true" Margin="@Margin.Dense"
                                    Class="filter-input">
                             <MudSelectItem T="bool?" Value="@(null)"></MudSelectItem>
-                            <MudSelectItem T="bool?" Value="@(true)">true</MudSelectItem>
-                            <MudSelectItem T="bool?" Value="@(false)">false</MudSelectItem>
+                            <MudSelectItem T="bool?" Value="@(true)">vero</MudSelectItem>
+                            <MudSelectItem T="bool?" Value="@(false)">falso</MudSelectItem>
                         </MudSelect>
                     }
                     else if (filterDefinition.FieldType.IsDateTime && !(filterDefinition.Operator ?? "").EndsWith("empty"))
