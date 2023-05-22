@@ -29,6 +29,10 @@ namespace MudBlazor
         [Category(CategoryTypes.FocusTrap.Behavior)]
         public RenderFragment ChildContent { get; set; }
 
+        [Parameter]
+        [Category(CategoryTypes.ComponentBase.Common)]
+        public string? ContentClass { get; set; }
+
         /// <summary>
         /// If true, the focus will no longer loop inside the component.
         /// </summary>
