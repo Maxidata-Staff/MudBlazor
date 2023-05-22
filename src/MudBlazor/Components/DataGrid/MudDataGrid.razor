@@ -411,7 +411,7 @@
                     </MudSelect>
                 </MudItem>
                 <MudItem xs="3">
-                    <MudSelect @bind-Value="filterDefinition.Operator" FullWidth="true" Label="Operator" Dense="true" Margin="@Margin.Dense"
+                    <MudSelect @bind-Value="filterDefinition.Operator" FullWidth="true" Label="Operatore" Dense="true" Margin="@Margin.Dense"
                                Class="filter-operator">
                         @foreach (var fieldOperator in FilterOperator.GetOperatorByDataType(fieldType))
                         {
@@ -422,12 +422,12 @@
                 <MudItem xs="4">
                     @if (fieldType.IsString && !(filterDefinition.Operator ?? "").EndsWith("empty"))
                     {
-                        <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Label="Value" Placeholder="Filter value" Margin="@Margin.Dense"
+                        <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Label="Value" Placeholder="Valore filtro" Margin="@Margin.Dense"
                                       Immediate="true" Class="filter-input"/>
                     }
                     else if (fieldType.IsNumber && !(filterDefinition.Operator ?? "").EndsWith("empty"))
                     {
-                        <MudNumericField T="double?" Value="@filter._valueNumber" ValueChanged="@filter.NumberValueChanged" FullWidth="true" Label="Value" Placeholder="Filter value" Margin="@Margin.Dense"
+                        <MudNumericField T="double?" Value="@filter._valueNumber" ValueChanged="@filter.NumberValueChanged" FullWidth="true" Label="Value" Placeholder="Valore filtro" Margin="@Margin.Dense"
                                          Immediate="true" Class="filter-input" Culture="@filter.FilterColumn?.Culture"/>
                     }
                     else if (fieldType.IsEnum)
@@ -446,8 +446,8 @@
                         <MudSelect T="bool?" Value="@filter._valueBool" ValueChanged="@filter.BoolValueChanged" FullWidth="true" Dense="true" Margin="@Margin.Dense"
                                    Class="filter-input">
                             <MudSelectItem T="bool?" Value="@(null)"></MudSelectItem>
-                            <MudSelectItem T="bool?" Value="@(true)">true</MudSelectItem>
-                            <MudSelectItem T="bool?" Value="@(false)">false</MudSelectItem>
+                            <MudSelectItem T="bool?" Value="@(true)">vero</MudSelectItem>
+                            <MudSelectItem T="bool?" Value="@(false)">falso</MudSelectItem>
                         </MudSelect>
                     }
                     else if (fieldType.IsDateTime && !(filterDefinition.Operator ?? "").EndsWith("empty"))
@@ -482,12 +482,12 @@
                 <MudItem xs="12">
                     @if (fieldType.IsString && !(filterDefinition.Operator ?? "").EndsWith("empty"))
                     {
-                        <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Placeholder="Filter value" Margin="@Margin.Dense"
+                        <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Placeholder="Valore filtro" Margin="@Margin.Dense"
                                       Immediate="true" Class="filter-input"/>
                     }
                     else if (fieldType.IsNumber && !(filterDefinition.Operator ?? "").EndsWith("empty"))
                     {
-                        <MudNumericField T="double?" Value="@filter._valueNumber" ValueChanged="@filter.NumberValueChanged" FullWidth="true" Placeholder="Filter value" Margin="@Margin.Dense"
+                        <MudNumericField T="double?" Value="@filter._valueNumber" ValueChanged="@filter.NumberValueChanged" FullWidth="true" Placeholder="Valore filtro" Margin="@Margin.Dense"
                                          Immediate="true" Class="filter-input" Culture="@filter.FilterColumn?.Culture"/>
                     }
                     else if (fieldType.IsEnum)
@@ -506,8 +506,8 @@
                         <MudSelect T="bool?" Value="@filter._valueBool" ValueChanged="@filter.BoolValueChanged" FullWidth="true" Dense="true" Margin="@Margin.Dense"
                                    Class="filter-input">
                             <MudSelectItem T="bool?" Value="@(null)"></MudSelectItem>
-                            <MudSelectItem T="bool?" Value="@(true)">true</MudSelectItem>
-                            <MudSelectItem T="bool?" Value="@(false)">false</MudSelectItem>
+                            <MudSelectItem T="bool?" Value="@(true)">vero</MudSelectItem>
+                            <MudSelectItem T="bool?" Value="@(false)">falso</MudSelectItem>
                         </MudSelect>
                     }
                     else if (fieldType.IsDateTime && !(filterDefinition.Operator ?? "").EndsWith("empty"))
