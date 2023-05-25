@@ -49,6 +49,7 @@ namespace MudBlazor
                 await BeginValidateAsync();
                 FieldChanged(_value);
             }
+            if (string.IsNullOrEmpty(Text)) await BeginValidateAsync();
         }
 
         protected override Task DateFormatChanged(string newFormat)
