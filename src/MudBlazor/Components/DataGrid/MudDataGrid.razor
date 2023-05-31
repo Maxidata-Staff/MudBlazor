@@ -330,7 +330,7 @@
             @{
                 var cell = new Cell<T>(this, column, item);
             }
-            <td data-label="@column.Title" class="@cell.computedClass" style="@cell.computedStyle">
+            <td data-label="@column.Title" class="@cell.computedClass" style="@cell.computedStyle" @onfocusin="@(() => SetSelectedItemAsync(item).AndForget())">
                 @if (column.IsEditable && !ReadOnly && EditMode == DataGridEditMode.Cell)
                 {
                     if (column.EditTemplate is not null)
