@@ -20,6 +20,7 @@ namespace MudBlazor
     [CascadingTypeParameter(nameof(T))]
     public partial class MudDataGrid<T> : MudComponentBase
     {
+        private bool _shouldRender = true;
         private int _currentPage = 0;
         internal int? _rowsPerPage;
         private bool _isFirstRendered = false;
@@ -143,7 +144,7 @@ namespace MudBlazor
                 StateHasChanged();
             }
             return Task.CompletedTask;
-            
+
         }
 
         public readonly List<Column<T>> RenderedColumns = new List<Column<T>>();
@@ -835,6 +836,13 @@ namespace MudBlazor
 
             if (parameters.TryGetValue(nameof(SortMode), out SortMode sortMode) && sortMode != sortModeBefore)
                 await ClearCurrentSortings();
+            _shouldRender = true;
+        }
+
+        protected override bool ShouldRender()
+        {
+            if (!_shouldRender) return false;
+            return base.ShouldRender();
         }
 
         #region Methods
@@ -1191,6 +1199,7 @@ namespace MudBlazor
         /// <returns></returns>
         public async Task SetSelectedItemAsync(T item)
         {
+            _shouldRender = false;
             if (MultiSelection)
             {
                 if (Selection.Contains(item))
@@ -1304,7 +1313,7 @@ namespace MudBlazor
             _dropContainer?.Refresh();
         }
 
-        
+
         public void GroupItems(bool noStateChange = false)
         {
             if (GroupedColumn == null)
@@ -1335,7 +1344,7 @@ namespace MudBlazor
                 _groupExpansions.Contains(x.Key))).ToList();
 
             _allGroups = allGroupings.Select(x => new GroupDefinition<T>(x,
-                _groupExpansions.Contains(x.Key))).ToList();                
+                _groupExpansions.Contains(x.Key))).ToList();
 
             if ((_isFirstRendered || ServerData != null) && !noStateChange)
                 StateHasChanged();
