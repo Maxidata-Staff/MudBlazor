@@ -67,12 +67,12 @@
                                             @Filter(f, null)
                                         }
                                     </MudGrid>
-                                    <MudButton Class="mt-2" StartIcon="@Icons.Material.Filled.Add" OnClick="@AddFilter" Color="@Color.Primary">Add Filter</MudButton>
+                                    <MudButton Class="mt-2" StartIcon="@Icons.Material.Filled.Add" OnClick="@AddFilter" Color="@Color.Primary">Aggiungi filtro</MudButton>
                                     @if (ServerData != null)
                                     {
-                                        <MudButton Class="mt-2" StartIcon="@Icons.Material.Filled.Add" OnClick="@ApplyFiltersAsync" Color="@Color.Primary">Apply</MudButton>
+                                        <MudButton Class="mt-2" StartIcon="@Icons.Material.Filled.Add" OnClick="@ApplyFiltersAsync" Color="@Color.Primary">Applica</MudButton>
                                     }
-                                    <MudButton Class="mt-2" StartIcon="@Icons.Material.Filled.Remove" OnClick="@ClearFiltersAsync" Color="@Color.Primary">Clear</MudButton>
+                                    <MudButton Class="mt-2" StartIcon="@Icons.Material.Filled.Remove" OnClick="@ClearFiltersAsync" Color="@Color.Primary">Pulisci</MudButton>
                                 }
                                 else
                                 {
@@ -401,7 +401,7 @@
                     <MudIconButton Class="remove-filter-button" Icon="@Icons.Material.Filled.Close" OnClick="@filter.RemoveFilterAsync" Size="@Size.Small" Style="align-self: flex-end"></MudIconButton>
                 </MudItem>
                 <MudItem xs="4">
-                    <MudSelect T="Column<T>" Value="@filterDefinition.Column" ValueChanged="@filter.FieldChanged" FullWidth="true" Label="Column" Dense="true" Margin="@Margin.Dense"
+                    <MudSelect T="Column<T>" Value="@filterDefinition.Column" ValueChanged="@filter.FieldChanged" FullWidth="true" Label="Colonna" Dense="true" Margin="@Margin.Dense"
                                Class="filter-field">
                         @foreach (var renderColumn in RenderedColumns ?? Enumerable.Empty<Column<T>>())
                         {
@@ -421,12 +421,12 @@
                 <MudItem xs="4">
                     @if (filterDefinition.FieldType.IsString && !(filterDefinition.Operator ?? "").EndsWith("empty"))
                     {
-                        <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Label="Value" Placeholder="Valore filtro" Margin="@Margin.Dense"
+                        <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Label="Valore" Placeholder="Valore filtro" Margin="@Margin.Dense"
                                       Immediate="true" Class="filter-input"/>
                     }
                     else if (filterDefinition.FieldType.IsNumber && !(filterDefinition.Operator ?? "").EndsWith("empty"))
                     {
-                        <MudNumericField T="double?" Value="@filter._valueNumber" ValueChanged="@filter.NumberValueChanged" FullWidth="true" Label="Value" Placeholder="Valore filtro" Margin="@Margin.Dense"
+                    <MudNumericField T="double?" Value="@filter._valueNumber" ValueChanged="@filter.NumberValueChanged" FullWidth="true" Label="Valore" Placeholder="Valore filtro" Margin="@Margin.Dense"
                                          Immediate="true" Class="filter-input" Culture="@filter.FilterColumn?.Culture"/>
                     }
                     else if (filterDefinition.FieldType.IsEnum)
@@ -462,7 +462,7 @@
                     }
                     else if (filterDefinition.FieldType.IsGuid)
                     {
-                        <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Label="Value" Placeholder="Filter value" Margin="@Margin.Dense"
+                    <MudTextField T="string" Value="@filter._valueString" ValueChanged="@filter.StringValueChanged" FullWidth="true" Label="Valore" Placeholder="Filter value" Margin="@Margin.Dense"
                                       Immediate="true" Class="filter-input"/>
                     }
                 </MudItem>
