@@ -1192,6 +1192,9 @@ namespace MudBlazor
             }
         }
 
+        [Parameter]
+        public bool PreventRenderOnSelectedItem { get; set; } = false;
+
         /// <summary>
         /// Set the currently selected item in the data grid.
         /// </summary>
@@ -1199,7 +1202,7 @@ namespace MudBlazor
         /// <returns></returns>
         public async Task SetSelectedItemAsync(T item)
         {
-            _shouldRender = false;
+            _shouldRender = !PreventRenderOnSelectedItem;
             if (MultiSelection)
             {
                 if (Selection.Contains(item))
