@@ -313,15 +313,12 @@ namespace MudBlazor
                 return;
             }
 
-            _initialDirection = _initialDirection switch
-            {
-                SortDirection.Ascending => SortDirection.Descending,
-                _ => SortDirection.Ascending
-            };
+            if (_initialDirection == SortDirection.Descending) { await RemoveSortAsync(); return; }
+            if (_initialDirection == SortDirection.Ascending) _initialDirection = SortDirection.Descending;
 
             DataGrid.DropContainerHasChanged();
 
-            if (args.CtrlKey && DataGrid.SortMode == SortMode.Multiple)
+            if ((args.CtrlKey || DataGrid.SortDefinitions.Count() > 1) && DataGrid.SortMode == SortMode.Multiple)
                 await InvokeAsync(() => DataGrid.ExtendSortAsync(Column.PropertyName, _initialDirection, Column.GetLocalSortFunc(), Column.Comparer));
             else
                 await InvokeAsync(() => DataGrid.SetSortAsync(Column.PropertyName, _initialDirection, Column.GetLocalSortFunc(), Column.Comparer));
