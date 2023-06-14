@@ -89,18 +89,22 @@
 
 
     public int _oldItem { get; set; }
+    public int _oldEditMode { get; set; }
+    public int _oldReadOnly { get; set; }
     public bool _shouldRender { get; set; } = false;
 
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-        if (_oldItem != item.GetHashCode())
+        if (_oldItem != item.GetHashCode() || _oldEditMode != EditMode.GetHashCode() || _oldReadOnly != ReadOnly.GetHashCode())
         {
             cell = new Cell<T>(grid, column, item);
             _shouldRender = true;
         }
         _oldItem = item.GetHashCode();
-        
+        _oldEditMode = EditMode.GetHashCode();
+        _oldReadOnly = ReadOnly.GetHashCode();
+
     }
 
 
