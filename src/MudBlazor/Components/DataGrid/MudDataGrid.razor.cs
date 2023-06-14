@@ -20,7 +20,7 @@ namespace MudBlazor
     [CascadingTypeParameter(nameof(T))]
     public partial class MudDataGrid<T> : MudComponentBase
     {
-        private bool _shouldRender = true;
+        //private bool _shouldRender = true;
         private int _currentPage = 0;
         internal int? _rowsPerPage;
         private bool _isFirstRendered = false;
@@ -836,14 +836,14 @@ namespace MudBlazor
 
             if (parameters.TryGetValue(nameof(SortMode), out SortMode sortMode) && sortMode != sortModeBefore)
                 await ClearCurrentSortings();
-            _shouldRender = true;
+            //_shouldRender = true;
         }
 
-        protected override bool ShouldRender()
-        {
-            if (!_shouldRender) return false;
-            return base.ShouldRender();
-        }
+        //protected override bool ShouldRender()
+        //{
+        //    if (!_shouldRender) return false;
+        //    return base.ShouldRender();
+        //}
 
         #region Methods
 
@@ -1192,8 +1192,8 @@ namespace MudBlazor
             }
         }
 
-        [Parameter]
-        public bool PreventRenderOnSelectedItem { get; set; } = false;
+        //[Parameter]
+        //public bool PreventRenderOnSelectedItem { get; set; } = false;
 
         /// <summary>
         /// Set the currently selected item in the data grid.
@@ -1202,7 +1202,7 @@ namespace MudBlazor
         /// <returns></returns>
         public async Task SetSelectedItemAsync(T item)
         {
-            _shouldRender = !PreventRenderOnSelectedItem;
+            //_shouldRender = !PreventRenderOnSelectedItem;
             if (MultiSelection)
             {
                 if (Selection.Contains(item))

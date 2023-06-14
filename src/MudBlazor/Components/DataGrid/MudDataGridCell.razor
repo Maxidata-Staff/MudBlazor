@@ -1,0 +1,113 @@
+@typeparam T
+
+@if (cell != null)
+{
+    
+<td data-label="@column.Title" class="@cell.computedClass" style="@cell.computedStyle" @onfocusin="OnSelectedItem">
+    @if (column.IsEditable && !ReadOnly && EditMode == DataGridEditMode.Cell)
+    {
+        if (column.EditTemplate is not null)
+        {
+            @column.EditTemplate(cell._cellContext)
+        }
+        else
+        {
+            if (column.PropertyType == typeof(string))
+            {
+                <MudTextField T="string"
+
+                    TextChanged="@((s) => _shouldRender = true)"
+                              Value="@cell._valueString"
+                              ValueChanged="@cell.StringValueChangedAsync"
+                              Margin="@Margin.Dense" Style="margin-top:0"
+                              Required="true"
+                              Variant="@Variant.Text" />
+            }
+            else if (column.isNumber)
+            {
+                <MudNumericField T="double?"
+                                     TextChanged="@((s) => _shouldRender = true)"
+                                 Value="@cell._valueNumber"
+                                 ValueChanged="@cell.NumberValueChangedAsync"
+                                 Margin="@Margin.Dense" Style="margin-top:0"
+                                 Required="true" Variant="@Variant.Text" Culture="@column.Culture" />
+            }
+        }
+    }
+    else
+    {
+        if (column.CellTemplate is not null)
+        {
+            @column.CellTemplate(cell._cellContext)
+        }
+        else if (column.Culture is not null && column.isNumber)
+        {
+            if (column.ContentFormat is not null)
+            {
+                @(((IFormattable)cell._valueNumber)?.ToString(column.ContentFormat, column.Culture))
+            }
+            else
+            {
+                @cell._valueNumber?.ToString(column.Culture)
+            }
+        }
+        else
+        {
+            if (column.ContentFormat is not null)
+            {
+                @(((IFormattable)cell.ComputedValue)?.ToString(column.ContentFormat, column.Culture))
+            }
+            else
+            {
+                @cell.ComputedValue
+            }
+        }
+    }
+</td>
+}
+
+
+@code {
+    internal Cell<T> cell { get; set; }
+
+    [Parameter] public Column<T> column { get; set; }
+    [Parameter] public T item { get; set; }
+    [Parameter] public MudDataGrid<T> grid { get; set; }
+    [Parameter] public bool ReadOnly { get; set; }
+    [Parameter] public DataGridEditMode? EditMode { get; set; }
+    [Parameter] public EventCallback OnSelectedItem { get; set; }
+
+
+
+
+    protected override void OnInitialized()
+    {
+        cell = new Cell<T>(grid, column, item);
+        _oldItem = item.GetHashCode();
+        base.OnInitialized();
+    }
+
+
+    public int _oldItem { get; set; }
+    public bool _shouldRender { get; set; } = false;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        if (_oldItem != item.GetHashCode())
+        {
+            cell = new Cell<T>(grid, column, item);
+            _shouldRender = true;
+        }
+        _oldItem = item.GetHashCode();
+        
+    }
+
+
+    protected override bool ShouldRender()
+    {
+        if (!_shouldRender) return false;
+        _shouldRender = false;
+        return base.ShouldRender();
+    }
+}
