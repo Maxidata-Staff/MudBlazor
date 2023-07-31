@@ -15,7 +15,7 @@
     <PackageProjectUrl>http://mudblazor.com/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MudBlazor/MudBlazor</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageVersion>6.3.1-maxidata5</PackageVersion>
+    <PackageVersion>6.7.0-maxidata3</PackageVersion>
   </PropertyGroup>
   
   <PropertyGroup>

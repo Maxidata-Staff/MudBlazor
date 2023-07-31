@@ -708,6 +708,8 @@ namespace MudBlazor
         /// </summary>
         [Parameter] public bool ShowMenuIcon { get; set; } = false;
 
+        [Parameter] public bool UseMudDataGridCell { get; set; } = false;
+
         #endregion
 
         #region Properties
