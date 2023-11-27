@@ -220,7 +220,7 @@
                                             {
                                                 if (UseMudDataGridCell)
                                                 {
-                                                    <MudBlazor.Components.DataGrid.MudDataGridCell column="@column" grid="@this" item="@item" EditMode="EditMode" OnSelectedItem="@(() => SetSelectedItemAsync(item).AndForget())" T="T" ReadOnly="ReadOnly" />
+                                                    <MudDataGridCell column="@column" grid="@this" item="@item" EditMode="EditMode" OnSelectedItem="@(() => SetSelectedItemAsync(item).AndForget())" T="T" ReadOnly="ReadOnly" />
                                                 }
                                                 else
                                                 {
